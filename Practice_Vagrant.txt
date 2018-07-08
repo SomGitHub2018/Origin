@@ -1095,6 +1095,51 @@ total 3977
 -rw-r--r-- 1 Somesh 197609     417 Jul  8 18:02 Practice_Vagrant_Ubuntu.txt
 Somesh@Som MINGW64 ~/som_git/Origin (master)
 $ 
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ git merge
+Already up to date.
+
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ git fetch
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/SomGitHub2018/Origin
+   36f5dae..86a460e  master     -> origin/master
+
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ ls -la
+total 3989
+drwxr-xr-x 1 Somesh 197609       0 Jul  8 19:11 ./
+drwxr-xr-x 1 Somesh 197609       0 Jul  8 19:01 ../
+drwxr-xr-x 1 Somesh 197609       0 Jul  8 19:20 .git/
+-rw-r--r-- 1 Somesh 197609 3985732 Jul  8 19:05 DevOps_Notes.docx
+-rw-r--r-- 1 Somesh 197609   46848 Jul  8 18:02 errorVagrant.JPG
+-rw-r--r-- 1 Somesh 197609    3215 Jul  8 19:05 Practice_Docker.txt
+-rw-r--r-- 1 Somesh 197609   27059 Jul  8 19:05 Practice_Vagrant.txt
+-rw-r--r-- 1 Somesh 197609     417 Jul  8 18:02 Practice_Vagrant_Ubuntu.txt
+
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ 
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ git reset --hard
+HEAD is now at 36f5dae committing from git cmd
+
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ 
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ ls -l
+total 3978
+-rw-r--r-- 1 Somesh 197609 3985732 Jul  8 19:05 DevOps_Notes.docx
+-rw-r--r-- 1 Somesh 197609   46848 Jul  8 18:02 errorVagrant.JPG
+-rw-r--r-- 1 Somesh 197609    3215 Jul  8 19:05 Practice_Docker.txt
+-rw-r--r-- 1 Somesh 197609   27059 Jul  8 19:05 Practice_Vagrant.txt
+-rw-r--r-- 1 Somesh 197609     417 Jul  8 18:02 Practice_Vagrant_Ubuntu.txt
+-rw-r--r-- 1 Somesh 197609      26 Jul  8 19:29 README.txt
+
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$
 
 
 
