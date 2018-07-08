@@ -1,0 +1,17 @@
+Step 1 – Install VirtualBox.
+sudo apt-get install virtualbox
+
+Step 2 – Install Vagrant.
+sudo apt-get install vagrant
+
+Step 3 – Verify Vagrant version
+$vagrant
+
+Run the following command in your terminal.
+$vagrant box add ubuntu/trusty64
+
+Now initialize the vagrant box using the following command.
+$ vagrant init ubuntu/trusty64
+
+Finally run the following command to start your box.
+$ vagrant up
