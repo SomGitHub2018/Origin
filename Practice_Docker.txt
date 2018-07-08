@@ -1,0 +1,84 @@
+
+
+                        ##         .
+                  ## ## ##        ==
+               ## ## ## ## ##    ===
+           /"""""""""""""""""\___/ ===
+      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+           \______ o           __/
+             \    \         __/
+              \____\_______/
+
+docker is configured to use the default machine with IP 192.168.99.100
+For help getting started, check out the docs at https://docs.docker.com
+
+
+Start interactive shell
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+Start interactive shell
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ ls
+boot2docker.iso  docker-compose.exe*  docker-quickstart-terminal.ico  kitematic/  unins000.dat
+docker.exe*      docker-machine.exe*  installers/                     start.sh*   unins000.exe*
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker -v
+Docker version 18.03.0-ce, build 0520e24302
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+centos-som23            latest              fae43ac36cee        6 days ago          329MB
+someshdevops2018/test   latest              fae43ac36cee        6 days ago          329MB
+centos                  latest              49f7960eb7e4        4 weeks ago         200MB
+devops2018/batch23      latest              6a2aae469127        5 months ago        357MB
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -it centos
+[root@dd0ccaa1b50e /]# pwd
+/
+[root@dd0ccaa1b50e /]#
+$ docker run -it centos
+[root@dd0ccaa1b50e /]# pwd
+/
+[root@dd0ccaa1b50e /]# docker ps
+bash: docker: command not found
+[root@dd0ccaa1b50e /]# 
+[root@dd0ccaa1b50e /]#(ctrl q+p)
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+dd0ccaa1b50e        centos              "/bin/bash"         2 minutes ago       Up About a minute                       gracious_mirzakhani
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username (someshdevops2018): someshdevops2018
+Password:
+Login Succeeded
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$$ ls
+boot2docker.iso  docker.exe*  docker-compose.exe*  docker-machine.exe*  docker-quickstart-terminal.ico  installers/  kitematic/  start.sh*  unins000.dat  unins000.exe*
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ cd installers/
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox/installers
+$ ls
+git/  virtualbox/
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox/installers
+$ cd virtualbox/
+common.cab      virtualbox.msi
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox/installers
+$
