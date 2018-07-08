@@ -414,6 +414,478 @@ $ vagrant suspend
 
 Somesh@Som MINGW64 ~/someshDevops
 $
+Somesh@Som MINGW64 ~
+$ cd devops2/
+
+Somesh@Som MINGW64 ~/devops2
+$ ls
+
+Somesh@Som MINGW64 ~/devops2
+$ 
+Somesh@Som MINGW64 ~/devops2
+$ vagrant init ubuntu/trusty64
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+
+Somesh@Som MINGW64 ~/devops2
+$ ls
+Vagrantfile
+
+Somesh@Som MINGW64 ~/devops2
+$
+Somesh@Som MINGW64 ~/devops2
+$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'ubuntu/trusty64'...
+:
+:
+    default:
+    default: Guest Additions Version: 4.3.36
+    default: VirtualBox Version: 5.2
+==> default: Mounting shared folders...
+    default: /vagrant => C:/Users/Somesh/devops2
+
+Somesh@Som MINGW64 ~/devops2
+Somesh@Som MINGW64 ~/devops2
+$ mkdir Roja
+
+Somesh@Som MINGW64 ~/devops2
+$ ls
+Roja/  Vagrantfile
+
+Somesh@Som MINGW64 ~/devops2
+$ vagrant ssh
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-153-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+ System information disabled due to load higher than 1.0
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+New release '16.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+vagrant@vagrant-ubuntu-trusty-64:~$
+vagrant@vagrant-ubuntu-trusty-64:~$ cd /
+vagrant@vagrant-ubuntu-trusty-64:/$ ls
+bin   dev  home        lib    lost+found  mnt  proc  run   srv  tmp  vagrant  vmlinuz
+boot  etc  initrd.img  lib64  media       opt  root  sbin  sys  usr  var
+vagrant@vagrant-ubuntu-trusty-64:/$ cd vagrant/
+vagrant@vagrant-ubuntu-trusty-64:/vagrant$ ls
+Roja  Vagrantfile
+vagrant@vagrant-ubuntu-trusty-64:/vagrant$
+vagrant@vagrant-ubuntu-trusty-64:/vagrant$ mkdir newfolder
+vagrant@vagrant-ubuntu-trusty-64:/vagrant$ exit
+logout
+Connection to 127.0.0.1 closed.
+
+Somesh@Som MINGW64 ~/devops2
+$ ls
+newfolder/  Roja/  Vagrantfile
+
+Somesh@Som MINGW64 ~/devops2
+$ touch trainingnew
+
+Somesh@Som MINGW64 ~/devops2
+$ vagrant ssh
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-153-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Sun Jul  8 11:30:03 UTC 2018
+
+  System load:  0.01              Processes:           74
+  Usage of /:   3.6% of 39.34GB   Users logged in:     0
+  Memory usage: 25%               IP address for eth0: 10.0.2.15
+  Swap usage:   0%
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+New release '16.04.4 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Sun Jul  8 11:30:03 2018 from 10.0.2.2
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+vagrant@vagrant-ubuntu-trusty-64:~$ cd /
+vagrant@vagrant-ubuntu-trusty-64:/$ ls
+bin   dev  home        lib    lost+found  mnt  proc  run   srv  tmp  vagrant  vmlinuz
+boot  etc  initrd.img  lib64  media       opt  root  sbin  sys  usr  var
+vagrant@vagrant-ubuntu-trusty-64:/$ cd vagrant/
+vagrant@vagrant-ubuntu-trusty-64:/vagrant$ ls
+newfolder  Roja  trainingnew  Vagrantfile
+vagrant@vagrant-ubuntu-trusty-64:/vagrant$
+
+=========================================Git================================================
+Somesh@Som MINGW64 ~/som_git (master)
+$ git --version
+git version 2.18.0.windows.1
+
+Somesh@Som MINGW64 ~/som_git (master)
+$ git config --list
+core.symlinks=false
+core.autocrlf=true
+core.fscache=true
+color.diff=auto
+color.status=auto
+color.branch=auto
+color.interactive=true
+help.format=html
+rebase.autosquash=true
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+http.sslbackend=openssl
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+credential.helper=manager
+user.name=someshGit
+user.email=someshsahu@gmail.com
+core.editor=vim
+gui.recentrepo=C:/Users/Somesh/som_git
+gui.recentrepo=C:/SomeshFolder/Studies/DevOps/GitTutorial
+gui.recentrepo=C:/SomeshFolder/Studies/DevOps/GitTutorial2
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.symlinks=false
+core.ignorecase=true
+gui.wmstate=normal
+gui.geometry=1109x563+96+96 216 255
+remote.origin.url=https://github.com/SomGithub2018
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+$ ls -la
+total 31
+drwxr-xr-x 1 Somesh 197609  0 Jul  8 09:58 ./
+drwxr-xr-x 1 Somesh 197609  0 Jul  8 11:08 ../
+drwxr-xr-x 1 Somesh 197609  0 Jul  8 17:19 .git/
+-rw-r--r-- 1 Somesh 197609 35 Jul  8 08:19 best.txt
+drwxr-xr-x 1 Somesh 197609  0 Jul  8 10:20 gitClone/
+-rw-r--r-- 1 Somesh 197609 32 Jul  8 09:48 siva
+-rw-r--r-- 1 Somesh 197609 37 Jul  8 09:48 team
+-rw-r--r-- 1 Somesh 197609 66 Jul  7 10:02 test1
+-rw-r--r-- 1 Somesh 197609 21 Jul  7 09:52 test2
+-rw-r--r-- 1 Somesh 197609 28 Jul  8 09:48 training
+-rw-r--r-- 1 Somesh 197609 38 Jul  8 09:48 tree.txt
+
+Somesh@Som MINGW64 ~/som_git (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   gitClone/vagrant
+
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+Somesh@Som MINGW64 ~/som_git (master)
+$ vi test23
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+Somesh@Som MINGW64 ~/som_git (master)
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        gitClone/
+        test23
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+Somesh@Som MINGW64 ~/som_git (master)
+$ ls
+best.txt  gitClone/  siva  team  test1  test2  test23  training  tree.txt
+
+Somesh@Som MINGW64 ~/som_git (master)
+$ git add test23
+warning: LF will be replaced by CRLF in test23.
+The file will have its original line endings in your working directory.
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+Somesh@Som MINGW64 ~/som_git (master)
+$ git add -A
+warning: adding embedded git repository: gitClone/vagrant
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> gitClone/vagrant
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached gitClone/vagrant
+hint:
+hint: See "git help submodule" for more information.
+warning: LF will be replaced by CRLF in test23.
+The file will have its original line endings in your working directory.
+
+Somesh@Som MINGW64 ~/som_git (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   gitClone/vagrant
+        new file:   test23
+
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+$ git commit test23
+warning: LF will be replaced by CRLF in test23.
+The file will have its original line endings in your working directory.
+[master 1213894] This is my first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test23
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+Somesh@Som MINGW64 ~/som_git (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   gitClone/vagrant
+
+
+Somesh@Som MINGW64 ~/som_git (master)
+$ git commit gitClone/vagrant -m "This is my commit"
+[master 24221b8] This is my commit
+ 1 file changed, 1 insertion(+)
+ create mode 160000 gitClone/vagrant
+
+Somesh@Som MINGW64 ~/som_git (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+$ git log
+commit 24221b83ee93bcc8c6643eb99b012f67e4752162 (HEAD -> master)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 17:38:09 2018 +0530
+
+    This is my commit
+
+commit 121389466a38ff4a5cb8c95a7e2da8de34c9f843
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 17:36:42 2018 +0530
+
+    This is my first commit
+
+commit a25570f2ff92afd45fd838baca228e1faf0c5e07 (tree, origin)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 09:34:20 2018 +0530
+
+    Common commit from tree branch
+
+commit f497f98a34343e1f435b24f242ac14d10687c01d (smart, bang)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 08:58:22 2018 +0530
+
+    Commit from smart branch
+
+commit 09ae0cb6466eb1b404edb4b95f5ce943c86c5a6e (general)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 08:22:40 2018 +0530
+
+    This is best file commit
+
+commit ab7aee6ec0b3b062304c1a63f343d780f05e9e1e
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sat Jul 7 10:11:00 2018 +0530
+
+    This is my first commit
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+$ git log --stat
+commit 24221b83ee93bcc8c6643eb99b012f67e4752162 (HEAD -> master)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 17:38:09 2018 +0530
+
+    This is my commit
+
+ gitClone/vagrant | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 121389466a38ff4a5cb8c95a7e2da8de34c9f843
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 17:36:42 2018 +0530
+
+    This is my first commit
+
+ test23 | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit a25570f2ff92afd45fd838baca228e1faf0c5e07 (tree, origin)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 09:34:20 2018 +0530
+
+    Common commit from tree branch
+
+ siva     | 1 +
+ training | 1 +
+ tree.txt | 1 +
+ 3 files changed, 3 insertions(+)
+
+commit f497f98a34343e1f435b24f242ac14d10687c01d (smart, bang)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 08:58:22 2018 +0530
+
+    Commit from smart branch
+
+ team | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 09ae0cb6466eb1b404edb4b95f5ce943c86c5a6e (general)
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sun Jul 8 08:22:40 2018 +0530
+
+    This is best file commit
+
+ best.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit ab7aee6ec0b3b062304c1a63f343d780f05e9e1e
+Author: someshGit <someshsahu@gmail.com>
+Date:   Sat Jul 7 10:11:00 2018 +0530
+
+    This is my first commit
+
+ test1 | 3 +++
+ test2 | 1 +
+2 files changed, 4 insertions(+)
+$
+Somesh@Som MINGW64 ~/som_git (master)
+$ git log --oneline --decorate --graph --all
+* 24221b8 (HEAD -> master) This is my commit
+* 1213894 This is my first commit
+* a25570f (tree, origin) Common commit from tree branch
+* f497f98 (smart, bang) Commit from smart branch
+* 09ae0cb (general) This is best file commit
+* ab7aee6 This is my first commit
+
+Somesh@Som MINGW64 ~/som_git (master)
+$
+Somesh@Som MINGW64 ~/som_git (master)
+$ git branch
+  bang
+  general
+* master
+  origin
+  smart
+  tree
+
+Somesh@Som MINGW64 ~/som_git (master)
+$ git checkout tree
+Switched to branch 'tree'
+
+Somesh@Som MINGW64 ~/som_git (tree)
+$
+Somesh@Som MINGW64 ~/som_git (tree)
+$ git branch
+  bang
+  general
+  master
+  origin
+  smart
+* tree
+
+Somesh@Som MINGW64 ~/som_git (tree)
+$
+
+Somesh@Som MINGW64 ~/som_git (tree)
+$ pwd
+/c/Users/Somesh/som_git
+
+Somesh@Som MINGW64 ~/som_git (tree)
+$ git branch
+  bang
+  general
+  master
+  origin
+  smart
+* tree
+
+Somesh@Som MINGW64 ~/som_git (tree)
+$ git checkout -b bangTest
+Switched to a new branch 'bangTest'
+
+Somesh@Som MINGW64 ~/som_git (bangTest)
+$ git branch
+  bang
+* bangTest
+  general
+  master
+  origin
+  smart
+  tree
+
+Somesh@Som MINGW64 ~/som_git (bangTest)
+$
+Somesh@Som MINGW64 ~/som_git (bangTest)
+$ git clone https://github.com/SomGitHub2018/Origin.git
+Cloning into 'Origin'...
+remote: Counting objects: 12, done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 12 (delta 0), reused 9 (delta 0), pack-reused 0
+Unpacking objects: 100% (12/12), done.
+
+Somesh@Som MINGW64 ~/som_git (bangTest)
+$ ls
+best.txt  gitClone/  Origin/  siva  team  test1  test2  training  tree.txt
+
+Somesh@Som MINGW64 ~/som_git (bangTest)
+$ cd Origin/
+
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$ ls
+DevOps_Notes.docx  Practice_Vagrant.txt         README.txt
+errorVagrant.JPG   Practice_Vagrant_Ubuntu.txt
+
+Somesh@Som MINGW64 ~/som_git/Origin (master)
+$
+
+
+
+
+
+
+
+
+
+
 
 
 
