@@ -26,59 +26,451 @@ docker.exe*      docker-machine.exe*  installers/                     start.sh* 
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
 $ docker -v
 Docker version 18.03.0-ce, build 0520e24302
+	
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker version
+Client:
+ Version:       18.03.0-ce
+ API version:   1.37
+ Go version:    go1.9.4
+ Git commit:    0520e24302
+ Built: Fri Mar 23 08:31:36 2018
+ OS/Arch:       windows/amd64
+ Experimental:  false
+ Orchestrator:  swarm
 
-Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
-$ docker images
-REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
-centos-som23            latest              fae43ac36cee        6 days ago          329MB
-someshdevops2018/test   latest              fae43ac36cee        6 days ago          329MB
-centos                  latest              49f7960eb7e4        4 weeks ago         200MB
-devops2018/batch23      latest              6a2aae469127        5 months ago        357MB
-
-Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
-$ docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-
-Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
-$ docker run -it centos
-[root@dd0ccaa1b50e /]# pwd
-/
-[root@dd0ccaa1b50e /]#
-$ docker run -it centos
-[root@dd0ccaa1b50e /]# pwd
-/
-[root@dd0ccaa1b50e /]# docker ps
-bash: docker: command not found
-[root@dd0ccaa1b50e /]# 
-[root@dd0ccaa1b50e /]#(ctrl q+p)
-Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
-$ docker ps
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-dd0ccaa1b50e        centos              "/bin/bash"         2 minutes ago       Up About a minute                       gracious_mirzakhani
+Server:
+ Engine:
+  Version:      18.05.0-ce
+  API version:  1.37 (minimum version 1.12)
+  Go version:   go1.10.1
+  Git commit:   f150324
+  Built:        Wed May  9 22:20:42 2018
+  OS/Arch:      linux/amd64
+  Experimental: false
 
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
 $
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
-$ docker login
-Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
-Username (someshdevops2018): someshdevops2018
-Password:
-Login Succeeded
+$ docker-machine ip default
+192.168.99.100
 
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
-$$ ls
-boot2docker.iso  docker.exe*  docker-compose.exe*  docker-machine.exe*  docker-quickstart-terminal.ico  installers/  kitematic/  start.sh*  unins000.dat  unins000.exe*
+$
 
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
-$ cd installers/
+$ docker run hello-world
 
-Somesh@Som MINGW64 /c/Program Files/Docker Toolbox/installers
-$ ls
-git/  virtualbox/
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 
-Somesh@Som MINGW64 /c/Program Files/Docker Toolbox/installers
-$ cd virtualbox/
-common.cab      virtualbox.msi
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
 
-Somesh@Som MINGW64 /c/Program Files/Docker Toolbox/installers
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+hello-world                 latest              2cb0d9787c4d        3 days ago          1.85kB
+alpine                      latest              11cd0b38bc3c        7 days ago          4.41MB
+centos-som23                latest              fae43ac36cee        11 days ago         329MB
+someshdevops2018/test       latest              fae43ac36cee        11 days ago         329MB
+centos                      latest              49f7960eb7e4        5 weeks ago         200MB
+devops2018/batch23          latest              6a2aae469127        5 months ago        357MB
+dockersamples/static-site   latest              f589ccde7957        2 years ago         191MB
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker info
+Containers: 13
+ Running: 0
+ Paused: 0
+ Stopped: 13
+Images: 6
+Server Version: 18.05.0-ce
+Storage Driver: aufs
+ Root Dir: /mnt/sda1/var/lib/docker/aufs
+ Backing Filesystem: extfs
+ Dirs: 41
+ Dirperm1 Supported: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 773c489c9c1b21a6d78b5c538cd395416ec50f88
+runc version: 4fc53a81fb7c994640722ac585fa9ca548971871
+init version: 949e6fa
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.9.93-boot2docker
+Operating System: Boot2Docker 18.05.0-ce (TCL 8.2.1); HEAD : b5d6989 - Thu May 10 16:35:28 UTC 2018
+OSType: linux
+Architecture: x86_64
+CPUs: 1
+Total Memory: 995.6MiB
+Name: default
+ID: 7B6U:LL4K:MJ7X:BQL4:AK7J:HDQV:45PF:PEWK:ZVAJ:FKCX:SGA5:IE6R
+Docker Root Dir: /mnt/sda1/var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Username: someshdevops2018
+Registry: https://index.docker.io/v1/
+Labels:
+ provider=virtualbox
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps -a
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                        PORTS               NAMES
+3ade16cb97ed        hello-world                 "/hello"                 5 minutes ago       Exited (0) 5 minutes ago                          mystifying_albattani
+3b234053303d        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   18 minutes ago      Exited (137) 17 minutes ago                       upbeat_kare
+e25c4f960dd3        alpine                      "/bin/sh"                20 minutes ago      Exited (0) 19 minutes ago                         eager_einstein
+994a1fd988f5        alpine                      "echo 'hello from al…"   21 minutes ago      Exited (0) 21 minutes ago                         quirky_shtern
+bdeed5e212b1        alpine                      "ls -l"                  22 minutes ago      Exited (0) 22 minutes ago                         silly_yalow
+47daa94d2f3f        hello-world                 "/hello"                 24 minutes ago      Exited (0) 24 minutes ago                         thirsty_bartik
+dd0ccaa1b50e        centos                      "/bin/bash"              5 days ago          Exited (255) 39 minutes ago                       gracious_mirzakhani
+bf496b229594        centos                      "/bin/bash"              11 days ago         Exited (127) 11 days ago                          thirsty_lichterman
+90862b21916b        centos                      "/bin/bash"              11 days ago         Exited (0) 11 days ago                            3Centos
+714aa7097cb3        centos                      "/bin/bash"              11 days ago         Exited (0) 11 days ago                            2Centos
+99002dca2766        centos                      "/bin/bash"              11 days ago         Exited (127) 11 days ago                          1centos
+e0c4b6b65212        fae43ac36cee                "/bin/bash"              11 days ago         Exited (0) 11 days ago                            blissful_mendeleev
+3d871ad261b1        fae43ac36cee                "/bin/bash"              11 days ago         Exited (127) 11 days ago                          happy_ardinghelli
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker search centos
+NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+centos                             The official build of CentOS.                   4419                [OK]
+ansible/centos7-ansible            Ansible on Centos7                              114                                     [OK]
+jdeathe/centos-ssh                 CentOS-6 6.9 x86_64 / CentOS-7 7.4.1708 x86_…   97                                      [OK]
+consol/centos-xfce-vnc             Centos container with "headless" VNC session…   56                                      [OK]
+tutum/centos                       Simple CentOS docker image with SSH access      43
+imagine10255/centos6-lnmp-php56    centos6-lnmp-php56                              42                                      [OK]
+centos/mysql-57-centos7            MySQL 5.7 SQL database server                   31
+gluster/gluster-centos             Official GlusterFS Image [ CentOS-7 +  Glust…   31                                      [OK]
+openshift/base-centos7             A Centos7 derived base image for Source-To-I…   28
+centos/python-35-centos7           Platform for building and running Python 3.5…   25
+kinogmt/centos-ssh                 CentOS with SSH                                 21                                      [OK]
+centos/postgresql-96-centos7       PostgreSQL is an advanced Object-Relational …   21
+openshift/jenkins-2-centos7        A Centos7 based Jenkins v2.x image for use w…   13
+centos/httpd-24-centos7            Platform for running Apache httpd 2.4 or bui…   13
+openshift/mysql-55-centos7         DEPRECATED: A Centos7 based MySQL v5.5 image…   6
+openshift/jenkins-1-centos7        DEPRECATED: A Centos7 based Jenkins v1.x ima…   4
+pivotaldata/centos-gpdb-dev        CentOS image for GPDB development. Tag names…   4
+darksheer/centos                   Base Centos Image -- Updated hourly             3                                       [OK]
+openshift/wildfly-101-centos7      A Centos7 based WildFly v10.1 image for use …   3
+pivotaldata/centos                 Base centos, freshened up a little with a Do…   2
+blacklabelops/centos               CentOS Base Image! Built and Updates Daily!     1                                       [OK]
+pivotaldata/centos-mingw           Using the mingw toolchain to cross-compile t…   1
+jameseckersall/sonarr-centos       Sonarr on CentOS 7                              0                                       [OK]
+pivotaldata/centos-gcc-toolchain   CentOS with a toolchain, but unaffiliated wi…   0
+smartentry/centos                  centos with smartentry                          0                                       [OK]
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker pull ubuntu:trusty
+trusty: Pulling from library/ubuntu
+28bfaceaff9b: Pull complete
+ac540055f2f8: Pull complete
+2965585ef8b8: Pull complete
+2416bb9f3ad2: Pull complete
+93b55a6a6807: Pull complete
+Digest: sha256:885bb6705b01d99544ddb98cbe4e4555d1efe1d052cef90832e72a0688ac6b37
+Status: Downloaded newer image for ubuntu:trusty
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+$ docker run ubuntu:trusty ls -l
+total 64
+drwxr-xr-x   2 root root 4096 May 31 06:12 bin
+drwxr-xr-x   2 root root 4096 Apr 10  2014 boot
+drwxr-xr-x   5 root root  340 Jul 14 04:49 dev
+drwxr-xr-x  64 root root 4096 Jul 14 04:49 etc
+drwxr-xr-x   2 root root 4096 Apr 10  2014 home
+drwxr-xr-x  12 root root 4096 May 31 06:11 lib
+drwxr-xr-x   2 root root 4096 May 31 06:09 lib64
+drwxr-xr-x   2 root root 4096 May 31 06:08 media
+drwxr-xr-x   2 root root 4096 Apr 10  2014 mnt
+drwxr-xr-x   2 root root 4096 May 31 06:07 opt
+dr-xr-xr-x 154 root root    0 Jul 14 04:49 proc
+drwx------   2 root root 4096 May 31 06:12 root
+drwxr-xr-x   8 root root 4096 Jun  5 21:21 run
+drwxr-xr-x   2 root root 4096 Jun  5 21:21 sbin
+drwxr-xr-x   2 root root 4096 May 31 06:07 srv
+dr-xr-xr-x  13 root root    0 Jul 14 04:49 sys
+drwxrwxrwt   2 root root 4096 May 31 06:12 tmp
+drwxr-xr-x  11 root root 4096 May 31 06:08 usr
+drwxr-xr-x  13 root root 4096 May 31 06:12 var
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps -a
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                           PORTS               NAMES
+1ef29507f5da        ubuntu:trusty               "ls -l"                  2 minutes ago       Exited (0) 2 minutes ago                             gracious_goodall
+3ade16cb97ed        hello-world                 "/hello"                 20 minutes ago      Exited (0) 20 minutes ago                            mystifying_albattani
+3b234053303d        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   34 minutes ago      Exited (137) 32 minutes ago                          upbeat_kare
+e25c4f960dd3        alpine                      "/bin/sh"                36 minutes ago      Exited (0) 34 minutes ago                            eager_einstein
+994a1fd988f5        alpine                      "echo 'hello from al…"   37 minutes ago      Exited (0) 37 minutes ago                            quirky_shtern
+bdeed5e212b1        alpine                      "ls -l"                  37 minutes ago      Exited (0) 37 minutes ago                            silly_yalow
+47daa94d2f3f        hello-world                 "/hello"                 40 minutes ago      Exited (0) 40 minutes ago                            thirsty_bartik
+dd0ccaa1b50e        centos                      "/bin/bash"              5 days ago          Exited (255) About an hour ago                       gracious_mirzakhani
+bf496b229594        centos                      "/bin/bash"              11 days ago         Exited (127) 11 days ago                             thirsty_lichterman
+90862b21916b        centos                      "/bin/bash"              11 days ago         Exited (0) 11 days ago                               3Centos
+714aa7097cb3        centos                      "/bin/bash"              11 days ago         Exited (0) 11 days ago                               2Centos
+99002dca2766        centos                      "/bin/bash"              11 days ago         Exited (127) 11 days ago                             1centos
+e0c4b6b65212        fae43ac36cee                "/bin/bash"              11 days ago         Exited (0) 11 days ago                               blissful_mendeleev
+3d871ad261b1        fae43ac36cee                "/bin/bash"              11 days ago         Exited (127) 11 days ago                             happy_ardinghelli
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -d dockersamples/static-site
+1978356cfb5493cc020ba6a279e92f5f024b44157276e8823d1567b93b9e0eb8
+                                                                                                                                                                                    Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS               NAMES
+1978356cfb54        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   4 seconds ago       Up 4 seconds        80/tcp, 443/tcp     infallible_wozniak
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker port static-site
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker stop 1978356cfb54
+1978356cfb54
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm 1978356cfb54
+1978356cfb54
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+hello-world                 latest              2cb0d9787c4d        3 days ago          1.85kB
+alpine                      latest              11cd0b38bc3c        7 days ago          4.41MB
+centos-som23                latest              fae43ac36cee        11 days ago         329MB
+someshdevops2018/test       latest              fae43ac36cee        11 days ago         329MB
+ubuntu                      trusty              578c3e61a98c        5 weeks ago         223MB
+centos                      latest              49f7960eb7e4        5 weeks ago         200MB
+devops2018/batch23          latest              6a2aae469127        5 months ago        357MB
+dockersamples/static-site   latest              f589ccde7957        2 years ago         191MB
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run --name static-site -e AUTHOR="TEST" -d -P dockersamples/static-site
+C:\Program Files\Docker Toolbox\docker.exe: Error response from daemon: Conflict. The container name "/static-site" is already in use by container "e1d451079191e8d3aacb9bcb30198b3540032172e521e1a530a87e4e814a104d". You have to remove (or rename) that container to be able to reuse that name.
+See 'C:\Program Files\Docker Toolbox\docker.exe run --help'.
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rmi f589ccde7957
+Error response from daemon: conflict: unable to delete f589ccde7957 (must be forced) - image is being used by stopped container e1d451079191
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rmi -f f589ccde7957
+Untagged: dockersamples/static-site:latest
+Untagged: dockersamples/static-site@sha256:daa686c61d7d239b7977e72157997489db49f316b9b9af3909d9f10fd28b2dec
+Deleted: sha256:f589ccde7957fa3ddf76a2eeee4d2f5d687b32176f559b703b6b8cacf6d36bc4
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+hello-world             latest              2cb0d9787c4d        3 days ago          1.85kB
+alpine                  latest              11cd0b38bc3c        7 days ago          4.41MB
+someshdevops2018/test   latest              fae43ac36cee        11 days ago         329MB
+centos-som23            latest              fae43ac36cee        11 days ago         329MB
+ubuntu                  trusty              578c3e61a98c        5 weeks ago         223MB
+centos                  latest              49f7960eb7e4        5 weeks ago         200MB
+devops2018/batch23      latest              6a2aae469127        5 months ago        357MB
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run --name static-site -e AUTHOR="TEST" -d -P dockersamples/static-site
+Unable to find image 'dockersamples/static-site:latest' locally
+latest: Pulling from dockersamples/static-site
+fdd5d7827f33: Already exists
+a3ed95caeb02: Already exists
+716f7a5f3082: Already exists
+7b10f03a0309: Already exists
+aff3ab7e9c39: Already exists
+Digest: sha256:daa686c61d7d239b7977e72157997489db49f316b9b9af3909d9f10fd28b2dec
+Status: Downloaded newer image for dockersamples/static-site:latest
+C:\Program Files\Docker Toolbox\docker.exe: Error response from daemon: Conflict. The container name "/static-site" is already in use by container "e1d451079191e8d3aacb9bcb30198b3540032172e521e1a530a87e4e814a104d". You have to remove (or rename) that container to be able to reuse that name.
+See 'C:\Program Files\Docker Toolbox\docker.exe run --help'.
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker port static-site
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+hello-world                 latest              2cb0d9787c4d        3 days ago          1.85kB
+alpine                      latest              11cd0b38bc3c        7 days ago          4.41MB
+centos-som23                latest              fae43ac36cee        11 days ago         329MB
+someshdevops2018/test       latest              fae43ac36cee        11 days ago         329MB
+ubuntu                      trusty              578c3e61a98c        5 weeks ago         223MB
+centos                      latest              49f7960eb7e4        5 weeks ago         200MB
+devops2018/batch23          latest              6a2aae469127        5 months ago        357MB
+dockersamples/static-site   latest              f589ccde7957        2 years ago         191MB
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps -a
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS                           PORTS                                           NAMES
+e1d451079191        dockersamples/static-site   "e61d12292d69556eabe…"   7 minutes ago       Created                          0.0.0.0:32771->80/tcp, 0.0.0.0:32770->443/tcp   static-site
+39ae0540a8b7        ubuntu:trusty               "/bin/bash"              14 minutes ago      Exited (0) 13 minutes ago                                                        sharp_mendeleev
+1ef29507f5da        ubuntu:trusty               "ls -l"                  20 minutes ago      Exited (0) 20 minutes ago                                                        gracious_goodall
+3ade16cb97ed        hello-world                 "/hello"                 38 minutes ago      Exited (0) 38 minutes ago                                                        mystifying_albattani
+3b234053303d        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   About an hour ago   Exited (137) About an hour ago                                                   upbeat_kare
+e25c4f960dd3        alpine                      "/bin/sh"                About an hour ago   Exited (0) About an hour ago                                                     eager_einstein
+994a1fd988f5        alpine                      "echo 'hello from al…"   About an hour ago   Exited (0) About an hour ago                                                     quirky_shtern
+bdeed5e212b1        alpine                      "ls -l"                  About an hour ago   Exited (0) About an hour ago                                                     silly_yalow
+47daa94d2f3f        hello-world                 "/hello"                 About an hour ago   Exited (0) About an hour ago                                                     thirsty_bartik
+dd0ccaa1b50e        centos                      "/bin/bash"              5 days ago          Exited (255) About an hour ago                                                   gracious_mirzakhani
+bf496b229594        centos                      "/bin/bash"              11 days ago         Exited (127) 11 days ago                                                         thirsty_lichterman
+90862b21916b        centos                      "/bin/bash"              11 days ago         Exited (0) 11 days ago                                                           3Centos
+714aa7097cb3        centos                      "/bin/bash"              11 days ago         Exited (0) 11 days ago                                                           2Centos
+99002dca2766        centos                      "/bin/bash"              11 days ago         Exited (127) 11 days ago                                                         1centos
+e0c4b6b65212        fae43ac36cee                "/bin/bash"              11 days ago         Exited (0) 11 days ago                                                           blissful_mendeleev
+3d871ad261b1        fae43ac36cee                "/bin/bash"              11 days ago         Exited (127) 11 days ago                                                         happy_ardinghelli
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm e1d451079191
+e1d451079191
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker 3b234053303d
+docker: '3b234053303d' is not a docker command.
+See 'docker --help'
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm 3b234053303d
+3b234053303d
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+=====================================
+Stop All Containers
+
+# docker stop $(docker ps -a -q)
+Remove All Containers
+
+# docker rm $(docker ps -a -q)
+======================================
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm 3b234053303d
+3b234053303d
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run --name static-site -e AUTHOR="TEST" -d -P dockersamples/static-site
+2b61e1dc3c92742c6f08502a8738230cc4367641726a2745b17cead8839fd5cd
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker port static-site
+443/tcp -> 0.0.0.0:32772
+80/tcp -> 0.0.0.0:32773
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker-machine ip default
+192.168.99.100
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run --name static-site-2 -e AUTHOR="Your Name" -d -p 8888:80 dockersamples/static-site
+2e71cbda8a7023acd3891f110a5d3648ce9d6d28861fc22cc02aa2a1941d3482
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker port static-site
+443/tcp -> 0.0.0.0:32772
+80/tcp -> 0.0.0.0:32773
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                                           NAMES
+2e71cbda8a70        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   58 seconds ago      Up 58 seconds       443/tcp, 0.0.0.0:8888->80/tcp                   static-site-2
+2b61e1dc3c92        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   4 minutes ago       Up 4 minutes        0.0.0.0:32773->80/tcp, 0.0.0.0:32772->443/tcp   static-site
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+=============================output for static-site in web page====================
+http://192.168.99.100:32773/
+
+Hello TEST!
+This is being served from a docker
+container running Nginx.
+
+=======================================================================
+=============================output for static-site2 in web page====================
+http://192.168.99.100:8888/
+
+Hello Your Name!
+This is being served from a docker
+container running Nginx.
+
+=======================================================================
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE                       COMMAND                  CREATED             STATUS              PORTS                                           NAMES
+2e71cbda8a70        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   58 seconds ago      Up 58 seconds       443/tcp, 0.0.0.0:8888->80/tcp                   static-site-2
+2b61e1dc3c92        dockersamples/static-site   "/bin/sh -c 'cd /usr…"   4 minutes ago       Up 4 minutes        0.0.0.0:32773->80/tcp, 0.0.0.0:32772->443/tcp   static-site
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker stop static-site
+static-site
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker stop static-site2
+Error response from daemon: No such container: static-site2
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker stop static-site-2
+static-site-2
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm static-site
+static-site
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm static-site-2
+static-site-2
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
 $
