@@ -388,14 +388,6 @@ $ docker rm 3b234053303d
 
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
 $
-=====================================
-Stop All Containers
-
-# docker stop $(docker ps -a -q)
-Remove All Containers
-
-# docker rm $(docker ps -a -q)
-======================================
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
 $ docker rm 3b234053303d
 3b234053303d
@@ -471,6 +463,378 @@ static-site
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
 $ docker rm static-site-2
 static-site-2
+=====================================
+Stop All Containers
+
+# docker stop $(docker ps -a -q)
+Remove All Containers
+
+# docker rm $(docker ps -a -q)
+======================================
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker stop $(docker ps -a -q)
+39ae0540a8b7
+1ef29507f5da
+3ade16cb97ed
+e25c4f960dd3
+994a1fd988f5
+bdeed5e212b1
+47daa94d2f3f
+dd0ccaa1b50e
+bf496b229594
+90862b21916b
+714aa7097cb3
+99002dca2766
+e0c4b6b65212
+3d871ad261b1
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker images
+REPOSITORY                  TAG                 IMAGE ID            CREATED             SIZE
+hello-world                 latest              2cb0d9787c4d        3 days ago          1.85kB
+alpine                      latest              11cd0b38bc3c        7 days ago          4.41MB
+centos-som23                latest              fae43ac36cee        11 days ago         329MB
+someshdevops2018/test       latest              fae43ac36cee        11 days ago         329MB
+ubuntu                      trusty              578c3e61a98c        5 weeks ago         223MB
+centos                      latest              49f7960eb7e4        5 weeks ago         200MB
+devops2018/batch23          latest              6a2aae469127        5 months ago        357MB
+dockersamples/static-site   latest              f589ccde7957        2 years ago         191MB
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker rm $(docker ps -a -q)
+39ae0540a8b7
+1ef29507f5da
+3ade16cb97ed
+e25c4f960dd3
+994a1fd988f5
+bdeed5e212b1
+47daa94d2f3f
+dd0ccaa1b50e
+bf496b229594
+90862b21916b
+714aa7097cb3
+99002dca2766
+e0c4b6b65212
+3d871ad261b1
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$ docker info
+Containers: 0
+ Running: 0
+ Paused: 0
+ Stopped: 0
+Images: 7
+Server Version: 18.05.0-ce
+Storage Driver: aufs
+ Root Dir: /mnt/sda1/var/lib/docker/aufs
+ Backing Filesystem: extfs
+ Dirs: 20
+ Dirperm1 Supported: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+ Volume: local
+ Network: bridge host macvlan null overlay
+ Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 773c489c9c1b21a6d78b5c538cd395416ec50f88
+runc version: 4fc53a81fb7c994640722ac585fa9ca548971871
+init version: 949e6fa
+Security Options:
+ seccomp
+  Profile: default
+Kernel Version: 4.9.93-boot2docker
+Operating System: Boot2Docker 18.05.0-ce (TCL 8.2.1); HEAD : b5d6989 - Thu May 10 16:35:28 UTC 2018
+OSType: linux
+Architecture: x86_64
+CPUs: 1
+Total Memory: 995.6MiB
+Name: default
+ID: 7B6U:LL4K:MJ7X:BQL4:AK7J:HDQV:45PF:PEWK:ZVAJ:FKCX:SGA5:IE6R
+Docker Root Dir: /mnt/sda1/var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): false
+Username: someshdevops2018
+Registry: https://index.docker.io/v1/
+Labels:
+ provider=virtualbox
+Experimental: false
+Insecure Registries:
+ 127.0.0.0/8
+Live Restore Enabled: false
+
+
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$ docker build -t someshdevops2018/myfirstapp .
+Sending build context to Docker daemon  8.192kB
+Step 1/9 : FROM alpine:3.5
+3.5: Pulling from library/alpine
+f4900964ff56: Pull complete
+Digest: sha256:4d3ec631cdde98a03b91477b411a1fb42a9cadd8139c2e78029e44e199e58433
+Status: Downloaded newer image for alpine:3.5
+ ---> a2b04ae28915
+Step 2/9 : RUN apk add --update py2-pip
+ ---> Running in 36424b6ac168
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.5/main/x86_64/APKINDEX.tar.gz
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.5/community/x86_64/APKINDEX.tar.gz
+(1/12) Installing libbz2 (1.0.6-r5)
+(2/12) Installing expat (2.2.0-r1)
+(3/12) Installing libffi (3.2.1-r2)
+(4/12) Installing gdbm (1.12-r0)
+(5/12) Installing ncurses-terminfo-base (6.0_p20171125-r0)
+(6/12) Installing ncurses-terminfo (6.0_p20171125-r0)
+(7/12) Installing ncurses-libs (6.0_p20171125-r0)
+(8/12) Installing readline (6.3.008-r4)
+(9/12) Installing sqlite-libs (3.15.2-r2)
+(10/12) Installing python2 (2.7.14-r0)
+(11/12) Installing py-setuptools (29.0.1-r0)
+(12/12) Installing py2-pip (9.0.0-r1)
+Executing busybox-1.25.1-r2.trigger
+OK: 61 MiB in 23 packages
+Removing intermediate container 36424b6ac168
+ ---> ba0b604605df
+Step 3/9 : RUN pip install --upgrade pip
+ ---> Running in c5dbebf62571
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/0f/74/ecd13431bcc456ed390b44c8a6e917c1820365cbebcb6a8974d1cd045ab4/pip-10.0.1-py2.py3-none-any.whl (1.3MB)
+Installing collected packages: pip
+  Found existing installation: pip 9.0.0
+    Uninstalling pip-9.0.0:
+      Successfully uninstalled pip-9.0.0
+Successfully installed pip-10.0.1
+Removing intermediate container c5dbebf62571
+ ---> 2f68fbb72351
+Step 4/9 : COPY requirements.txt /usr/src/app/
+ ---> b97287b4a3cf
+Step 5/9 : RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
+ ---> Running in bbe6735cf970
+Collecting Flask==0.10.1 (from -r /usr/src/app/requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/db/9c/149ba60c47d107f85fe52564133348458f093dd5e6b57a5b60ab9ac517bb/Flask-0.10.1.tar.gz (544kB)
+Collecting Werkzeug>=0.7 (from Flask==0.10.1->-r /usr/src/app/requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/20/c4/12e3e56473e52375aa29c4764e70d1b8f3efa6682bef8d0aae04fe335243/Werkzeug-0.14.1-py2.py3-none-any.whl (322kB)
+Collecting Jinja2>=2.4 (from Flask==0.10.1->-r /usr/src/app/requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl (126kB)
+Collecting itsdangerous>=0.21 (from Flask==0.10.1->-r /usr/src/app/requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/dc/b4/a60bcdba945c00f6d608d8975131ab3f25b22f2bcfe1dab221165194b2d4/itsdangerous-0.24.tar.gz (46kB)
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.4->Flask==0.10.1->-r /usr/src/app/requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/4d/de/32d741db316d8fdb7680822dd37001ef7a448255de9699ab4bfcbdf4172b/MarkupSafe-1.0.tar.gz
+Installing collected packages: Werkzeug, MarkupSafe, Jinja2, itsdangerous, Flask
+  Running setup.py install for MarkupSafe: started
+    Running setup.py install for MarkupSafe: finished with status 'done'
+  Running setup.py install for itsdangerous: started
+    Running setup.py install for itsdangerous: finished with status 'done'
+  Running setup.py install for Flask: started
+    Running setup.py install for Flask: finished with status 'done'
+Successfully installed Flask-0.10.1 Jinja2-2.10 MarkupSafe-1.0 Werkzeug-0.14.1 itsdangerous-0.24
+Removing intermediate container bbe6735cf970
+ ---> cf81663d3709
+Step 6/9 : COPY app.py /usr/src/app/
+ ---> 6bebf861b2b6
+Step 7/9 : COPY templates/index.html /usr/src/app/templates/
+ ---> bbe88448c69a
+Step 8/9 : EXPOSE 5000
+ ---> Running in 0cadfa2ce814
+Removing intermediate container 0cadfa2ce814
+ ---> 74137e2a4613
+Step 9/9 : CMD ["python", "/usr/src/app/app.py"]
+ ---> Running in f962cc4d5754
+Removing intermediate container f962cc4d5754
+ ---> 8857bf3b1309
+Successfully built 8857bf3b1309
+Successfully tagged someshdevops2018/myfirstapp:latest
+SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$ docker run -p 8888:5000 --name myfirstapp someshdevops2018/myfirstapp
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+192.168.99.1 - - [14/Jul/2018 06:46:18] "GET / HTTP/1.1" 200 -
+192.168.99.1 - - [14/Jul/2018 06:46:33] "GET / HTTP/1.1" 200 -
+192.168.99.1 - - [14/Jul/2018 06:47:15] "GET / HTTP/1.1" 200 -
+192.168.99.1 - - [14/Jul/2018 06:47:18] "GET / HTTP/1.1" 200 -
+192.168.99.1 - - [14/Jul/2018 06:47:19] "GET / HTTP/1.1" 200 -
+192.168.99.1 - - [14/Jul/2018 06:47:20] "GET / HTTP/1.1" 200 -
+
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username (someshdevops2018): someshdevops2018
+Password:
+Login Succeeded
+
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$ docker push someshdevops2018/myfirstapp
+The push refers to repository [docker.io/someshdevops2018/myfirstapp]
+20adfa7381b9: Pushed
+c5a3bc17f3d2: Pushed
+3c8e2fa2f9b3: Pushed
+f787bf69d5d7: Pushed
+03b9c66a6525: Pushed
+482d2f8129cd: Pushed
+7105cc56962c: Mounted from library/alpine
+latest: digest: sha256:96e486cd22c022e242cd2255cd976cc256226369fdfaf945695834198e78b3d7 size: 1783
+
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$ docker stop myfirstapp
+myfirstapp
+
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$ docker rm myfirstapp
+myfirstapp
+
+Somesh@Som MINGW64 ~/DockerProjects/pythonProj
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -ti ubuntu:trusty
+root@c6eaead5d71f:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@c6eaead5d71f:/# mkdir test
+root@c6eaead5d71f:/# chmod 777 test
+root@c6eaead5d71f:/#
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+c6eaead5d71f        ubuntu:trusty       "/bin/bash"         38 seconds ago      Up 35 seconds                           competent_bardeen
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker exec c6eaead5d71f bash
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker exec -ti c6eaead5d71f bash
+root@c6eaead5d71f:/# ls
+bin   dev  home  lib64  mnt  proc  run   srv  test  usr
+boot  etc  lib   media  opt  root  sbin  sys  tmp   var
+root@c6eaead5d71f:/# exit
+exit
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+c6eaead5d71f        ubuntu:trusty       "/bin/bash"         About a minute ago   Up About a minute                       competent_bardeen
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+c6eaead5d71f        ubuntu:trusty       "/bin/bash"         About a minute ago   Up About a minute                       competent_bardeen
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -d -ti ubuntu:trusty
+2f54cfbf36887f8132fd300011977a3a2c9bb551d220d4cde56d36be970cad12
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+2f54cfbf3688        ubuntu:trusty       "/bin/bash"         8 seconds ago       Up 5 seconds                            awesome_wescoff
+c6eaead5d71f        ubuntu:trusty       "/bin/bash"         2 minutes ago       Up 2 minutes                            competent_bardeen
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker attach 2f54cfbf36887f8132fd300011977a3a2c9bb551d220d4cde56d36be970cad12
+root@2f54cfbf3688:/#
+root@2f54cfbf3688:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@2f54cfbf3688:/# mkdir roshan
+root@2f54cfbf3688:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  roshan  run  sbin  srv  sys  tmp  usr  var
+root@2f54cfbf3688:/# read escape sequence
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ ls
+boot2docker.iso  docker-compose.exe*  docker-quickstart-terminal.ico  kitematic/  unins000.dat
+docker.exe*      docker-machine.exe*  installers/                     start.sh*   unins000.exe*
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+2f54cfbf3688        ubuntu:trusty       "/bin/bash"         About a minute ago   Up About a minute                       awesome_wescoff
+c6eaead5d71f        ubuntu:trusty       "/bin/bash"         4 minutes ago        Up 4 minutes                            competent_bardeen
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker attach 2f54cfbf36887f8132fd300011977a3a2c9bb551d220d4cde56d36be970cad12
+root@2f54cfbf3688:/#
+root@2f54cfbf3688:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  roshan  run  sbin  srv  sys  tmp  usr  var
+root@2f54cfbf3688:/# read escape sequence
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -d -ti -P nginx
+f4a0b3908fc956306c3aa4272596ed26344c266d3d5944e7a1fa67d6157470c2
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                   NAMES
+f4a0b3908fc9        nginx               "nginx -g 'daemon of…"   8 seconds ago       Up 4 seconds        0.0.0.0:32774->80/tcp   sharp_chatterjee
+74b8fe02bc21        nginx               "nginx -g 'daemon of…"   10 minutes ago      Up 10 minutes       80/tcp                  hopeful_blackwell
+2f54cfbf3688        ubuntu:trusty       "/bin/bash"              16 minutes ago      Up 15 minutes                               awesome_wescoff
+c6eaead5d71f        ubuntu:trusty       "/bin/bash"              18 minutes ago      Up 18 minutes                               competent_bardeen
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$
+=======================================================================
+=============================output for nginx port mappint====================
+http://192.168.99.100:32774/
+
+Welcome to nginx!
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.
+Commercial support is available at nginx.com.
+
+Thank you for using nginx.
+
+=======================================================================
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker images| grep nginx
+nginx                         latest              3c5a05123222        2 weeks ago         109MB
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -ti --name box1 ubuntu:trusty
+root@113e371813b1:/#
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -ti --name box2 ubuntu:trusty
+root@1e76a5cb00ca:/#
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker inspect --format '{{.NetworkSettings.Networks.bridge.IPAddress}}' box1 box2
+172.17.0.2
+172.17.0.3
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+e090a1f14dcf        bridge              bridge              local
+6d70d49f1d86        bridge01            bridge              local
+c6c87e2f4e95        host                host                local
+c4c73bd9d00d        none                null                local
+
+$Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+e090a1f14dcf        bridge              bridge              local
+6d70d49f1d86        bridge01            bridge              local
+c6c87e2f4e95        host                host                local
+c4c73bd9d00d        none                null                local
 
 Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
 $
