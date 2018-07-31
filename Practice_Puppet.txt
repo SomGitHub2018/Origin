@@ -1,0 +1,134 @@
+puppet server===========================       
+docker network create puppet    
+docker network ls    
+docker pull schogini/docker-puppetserver-ubuntu    
+ls    
+ls -la    
+docker run -ti --rm --network puppet --name puppet --hostname puppet schogini/docker-puppetserver-ubuntu    
+history     
+service puppetserver start     
+puppet cert clean puppetnode1     
+puppet cert list      
+puppet cert sign puppetnode1
+puppet module install puppetlabs-motd --version 1.8.0
+puppet module install puppetlabs-motd --version 1.8.0 --force/etc/puppetlabs/code/environments/production/modules/motd
+tree /etc/puppetlabs/code/environments/production/modules/motd
+puppet apply --noop -e "include motd"
+puppet apply -e "include motd"
+ls -l /etc/motd/
+etc/puppetlabs/code/environments/production
+puppet apply --noop manifests/web.
+
+pppuppet node ============
+docker pull schogini/docker-puppetnode-ubuntu
+docker run -ti --network puppet --name puppetnode1 --hostname puppetnode1 schogini/docker-puppetnode-ubuntu
+puppet agent -t
+puppet
+
+
+========================================================================================================================
+
+
+$ docker network create puppet
+71cc006473b3ad94bbf49e7452033fac07f05f10de2d17497e127f352d408e0a
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+81d32bfc0ee0        bridge              bridge              local
+6d70d49f1d86        bridge01            bridge              local
+6f0a8e1c88b9        chef                bridge              local
+c6c87e2f4e95        host                host                local
+c4c73bd9d00d        none                null                local
+71cc006473b3        puppet              bridge              local
+7681e84d1a76        roja                bridge              local
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker pull schogini/docker-puppetserver-ubuntu
+Using default tag: latest
+latest: Pulling from schogini/docker-puppetserver-ubuntu
+bae382666908: Pull complete
+29ede3c02ff2: Pull complete
+da4e69f33106: Pull complete
+8d43e5f5d27f: Pull complete
+b0de1abb17d6: Pull complete
+03803453914e: Pull complete
+c0c869690ee1: Pull complete
+c40fc17f5a91: Pull complete
+8c5b55cc2243: Pull complete
+80ccf738d777: Pull complete
+71762249c559: Pull complete
+Digest: sha256:a44b51cffbceb600110cd87f16ced927869273c1c78947e83ccc55f442f7c989
+Status: Downloaded newer image for schogini/docker-puppetserver-ubuntu:latest
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -ti --rm --network puppet --name puppet --hostname puppet schogini/docker-puppetserver-ubuntu
+root@puppet:/# service puppetserver start
+root@puppet:/# puppet cert list -all
+  "puppetnode2"               (SHA256) A0:75:95:3F:EC:07:86:29:F1:D1:B6:3C:ED:E7:DB:D3:FE:BB:3A:74:1F:DD:2A:0C:7D:EE:A4:63:CA:4E:7D:78
+  "puppetnodel"               (SHA256) AF:CD:A2:AE:E0:D5:82:36:55:AD:CB:CB:6D:9B:5F:47:24:6F:38:38:10:21:0A:4C:72:0C:EC:B8:36:11:1D:F2
++ "d11aaef05d2d.ec2.internal" (SHA256) AB:56:66:60:3F:47:B5:73:D8:91:21:72:51:50:0B:08:C3:94:D2:34:99:2F:5C:51:CC:33:B4:A0:33:6A:34:D0 (alt names: "DNS:puppet", "DNS:d11aaef05d2d.ec2.internal")
++ "puppet"                    (SHA256) DC:1C:FF:07:E2:20:EA:0B:C1:A1:8E:C5:05:BE:B9:82:8A:EE:39:5B:92:5B:FF:7C:23:D3:32:B2:66:98:F3:D1 (alt names: "DNS:puppet", "DNS:puppet")
+root@puppet:/# puppet cert sign puppetnode2
+Signing Certificate Request for:
+  "puppetnode2" (SHA256) A0:75:95:3F:EC:07:86:29:F1:D1:B6:3C:ED:E7:DB:D3:FE:BB:3A:74:1F:DD:2A:0C:7D:EE:A4:63:CA:4E:7D:78
+Notice: Signed certificate request for puppetnode2
+Notice: Removing file Puppet::SSL::CertificateRequest puppetnode2 at '/etc/puppetlabs/puppet/ssl/ca/requests/puppetnode2.pem'
+root@puppet:/#root@puppet:/opt/puppetlabs# puppet cert list  "puppetnode2" (SHA256) 69:38:CE:6F:33:AD:C5:93:09:FD:32:39:B9:8E:67:59:F2:5D:0B:3B:0E:74:DF:EC:08:26:03:30:5D:2F:EB:C9root@puppet:/opt/puppetlabs# puppet cert sign puppetnode2Signing Certificate Request for:  "puppetnode2" (SHA256) 69:38:CE:6F:33:AD:C5:93:09:FD:32:39:B9:8E:67:59:F2:5D:0B:3B:0E:74:DF:EC:08:26:03:30:5D:2F:EB:C9Notice: Signed certificate request for puppetnode2Notice: Removing file Puppet::SSL::CertificateRequest puppetnode2 at '/etc/puppetlabs/puppet/ssl/ca/requests/puppetnode2.pem'root@puppet:/opt/puppetlabs# cd /etc/puppetlabs/code/environments/production/manifests/root@puppet:/etc/puppetlabs/code/environments/production/manifests# lssite.pproot@puppet:/etc/puppetlabs/code/environments/production/manifests# nao site.ppbash: nao: command not foundroot@puppet:/etc/puppetlabs/code/environments/production/manifests# nano site.pproot@puppet:/etc/puppetlabs/code/environments/production/manifests# nano site.pproot@puppet:/etc/puppetlabs/code/environments/production/manifests# cd /root@puppet:/# cd etc/puppetlabs/code/root@puppet:/etc/puppetlabs/code# lsenvironments  modulesroot@puppet:/etc/puppetlabs/code# cd environments/root@puppet:/etc/puppetlabs/code/environments# lsproductionroot@puppet:/etc/puppetlabs/code/environments# cd ..root@puppet:/etc/puppetlabs/code# cd modules/root@puppet:/etc/puppetlabs/code/modules# lsroot@puppet:/etc/puppetlabs/code/modules# cd..bash: cd..: command not foundroot@puppet:/etc/puppetlabs/code/modules# cd ..root@puppet:/etc/puppetlabs/code# cd environments/root@puppet:/etc/puppetlabs/code/environments# cd production/root@puppet:/etc/puppetlabs/code/environments/production# lsenvironment.conf  hiera.yaml  hieradata  manifests  modulesroot@puppet:/etc/puppetlabs/code/environments/production# cd manifests/root@puppet:/etc/puppetlabs/code/environments/production/manifests# lssite.pproot@puppet:/etc/puppetlabs/code/environments/production/manifests# cat site.ppnode 'puppetnode1' { include motd}node 'puppetnode2' { include motd}root@puppet:/etc/puppetlabs/code/environments/production/manifests# cd ../../..root@puppet:/etc/puppetlabs/code# lsenvironments  modulesroot@puppet:/etc/puppetlabs/code# cd environments/root@puppet:/etc/puppetlabs/code/environments# lsproductionroot@puppet:/etc/puppetlabs/code/environments# cd production/root@puppet:/etc/puppetlabs/code/environments/production# lsenvironment.conf  hiera.yaml  hieradata  manifests  modulesroot@puppet:/etc/puppetlabs/code/environments/production# cd manifests/root@puppet:/etc/puppetlabs/code/environments/production/manifests# lssite.pproot@puppet:/etc/puppetlabs/code/environments/production/manifests#root@puppet:/etc# lsX11                     cron.weekly     gshadow-         kernel          mke2fs.conf    ppp          resolvconf    sudoersadduser.conf            crontab         host.conf        ld.so.cache     modprobe.d     profile      rmt           sudoers.dalternatives            dbus-1          hostname         ld.so.conf      modules        profile.d    rpc           sysctl.confapparmor                debconf.conf    hosts            ld.so.conf.d    mtab           protocols    rsyslog.conf  sysctl.dapparmor.d              debian_version  hosts.allow      legal           nanorc         pulse        rsyslog.d     systemdapt                     default         hosts.deny       libaudit.conf   network        puppetlabs   securetty     terminfobash.bashrc             deluser.conf    init             locale.alias    networks       python3      security      timezonebash_completion.d       depmod.d        init.d           localtime       newt           python3.4    selinux       ucf.confbindresvport.blacklist  dhcp            initramfs-tools  logcheck        nologin        rc.local     services      udevblkid.conf              dpkg            inputrc          login.defs      nsswitch.conf  rc0.d        shadow        update-motd.dblkid.tab               environment     insserv          logrotate.conf  opt            rc1.d        shadow-       upstart-xsessionsca-certificates         fonts           insserv.conf     logrotate.d     os-release     rc2.d        shells        vimca-certificates.conf    fstab           insserv.conf.d   lsb-release     pam.conf       rc3.d        skel          vtrgbconsole-setup           fstab.d         iproute2         magic           pam.d          rc4.d        ssl           wgetrccron.d                  gai.conf        issue            magic.mime      passwd         rc5.d        subgidcron.daily              group           issue.net        mailcap         passwd-        rc6.d        subgid-cron.hourly             group-          java-7-openjdk   mailcap.order   perl           rcS.d        subuidcron.monthly            gshadow         kbd              mime.types      pki            resolv.conf  subuid-root@puppet:/etc# puppet module install puppetlabs-motd --version 1.8.0Notice: Preparing to install into /etc/puppetlabs/code/environments/production/modules ...Error: Could not install module 'puppetlabs-motd' (v1.8.0)  Module 'puppetlabs-motd' (v1.4.0) is already installed    Use `puppet module upgrade` to install a different version    Use `puppet module install --force` to re-install only this moduleroot@puppet:/etc# puppet module install puppetlabs-motd --version 1.8.0 --forceNotice: Preparing to install into /etc/puppetlabs/code/environments/production/modules ...Notice: Downloading from https://forgeapi.puppet.com ...Notice: Installing -- do not interrupt .../etc/puppetlabs/code/environments/production/modules└── puppetlabs-motd (v1.8.0)root@puppet:/etc#
+root@puppet:/etc# puppet apply --noop -e "include motd"Warning: /etc/puppetlabs/puppet/hiera.yaml: Use of 'hiera.yaml' version 3 is deprecated. It should be converted to version 5   (in /etc/puppetlabs/puppet/hiera.yaml)Notice: Compiled catalog for puppet in environment production in 0.33 secondsNotice: /Stage[main]/Motd/File[/etc/motd]/ensure: current_value absent, should be file (noop)Notice: Class[Motd]: Would have triggered 'refresh' from 1 eventsNotice: Stage[main]: Would have triggered 'refresh' from 1 eventsNotice: Applied catalog in 0.21 secondsroot@puppet:/etc# puppet apply -e "include motd"Warning: /etc/puppetlabs/puppet/hiera.yaml: Use of 'hiera.yaml' version 3 is deprecated. It should be converted to version 5   (in /etc/puppetlabs/puppet/hiera.yaml)Notice: Compiled catalog for puppet in environment production in 0.27 secondsNotice: /Stage[main]/Motd/File[/etc/motd]/ensure: defined content as '{md5}169075436049fca070911b6aad2ae4a5'Notice: Applied catalog in 0.41 secondsroot@puppet:/etc# lsX11                     cron.weekly     gshadow-         kernel          mke2fs.conf    pki         resolv.conf   subuid-adduser.conf            crontab         host.conf        ld.so.cache     modprobe.d     ppp         resolvconf    sudoersalternatives            dbus-1          hostname         ld.so.conf      modules        profile     rmt           sudoers.dapparmor                debconf.conf    hosts            ld.so.conf.d    motd           profile.d   rpc           sysctl.confapparmor.d              debian_version  hosts.allow      legal           mtab           protocols   rsyslog.conf  sysctl.dapt                     default         hosts.deny       libaudit.conf   nanorc         pulse       rsyslog.d     systemdbash.bashrc             deluser.conf    init             locale.alias    network        puppetlabs  securetty     terminfobash_completion.d       depmod.d        init.d           localtime       networks       python3     security      timezonebindresvport.blacklist  dhcp            initramfs-tools  logcheck        newt           python3.4   selinux       ucf.confblkid.conf              dpkg            inputrc          login.defs      nologin        rc.local    services      udevblkid.tab               environment     insserv          logrotate.conf  nsswitch.conf  rc0.d       shadow        update-motd.dca-certificates         fonts           insserv.conf     logrotate.d     opt            rc1.d       shadow-       upstart-xsessionsca-certificates.conf    fstab           insserv.conf.d   lsb-release     os-release     rc2.d       shells        vimconsole-setup           fstab.d         iproute2         magic           pam.conf       rc3.d       skel          vtrgbcron.d                  gai.conf        issue            magic.mime      pam.d          rc4.d       ssl           wgetrccron.daily              group           issue.net        mailcap         passwd         rc5.d       subgidcron.hourly             group-          java-7-openjdk   mailcap.order   passwd-        rc6.d       subgid-cron.monthly            gshadow         kbd              mime.types      perl           rcS.d       subuidroot@puppet:/etc# ls -l /etc/motd-rw-r--r-- 1 root root 154 Jul 30 18:22 /etc/motdroot@puppet:/etc#
+=============================================================================
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker pull schogini/docker-puppetnode-ubuntu
+Using default tag: latest
+latest: Pulling from schogini/docker-puppetnode-ubuntu
+bae382666908: Already exists
+29ede3c02ff2: Already exists
+da4e69f33106: Already exists
+8d43e5f5d27f: Already exists
+b0de1abb17d6: Already exists
+6e5702709c72: Pull complete
+7ead9d953a7d: Pull complete
+c75ceb3f7895: Pull complete
+Digest: sha256:90d1aa0146fb1088009d801be259139ce6adfa9e3a4e9a2d37c46ffeca01d476
+Status: Downloaded newer image for schogini/docker-puppetnode-ubuntu:latest
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run -ti --network puppet --name puppetnode1 --hostname puppetnode1 schogini/docker-puppetnode-ubuntu
+root@puppetnode1:/# root@puppet:/#
+root@puppetnode1:/# puppet agent
+root@puppetnode1:/# puppet agent -t
+Info: Caching certificate for puppetnode1
+Info: Caching certificate_revocation_list for ca
+Info: Caching certificate for puppetnode1
+Info: Using configured environment 'production'
+Info: Retrieving pluginfacts
+Info: Retrieving plugin
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter]/ensure: created
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/facter_dot_d.rb]/ensure: defined content as '{md5}d71e93183a680ac78bc0389fd50470a0'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/package_provider.rb]/ensure: defined content as '{md5}539766a71dfb2f65e94a7c91bf413fcf'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/pe_version.rb]/ensure: defined content as '{md5}60d47406026c8201e51394227ddf780d'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/puppet_settings.rb]/ensure: defined content as '{md5}9438c0839ae28dc52fffb8348ae5124f'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/root_home.rb]/ensure: defined content as '{md5}35702ae0c7410ec4d2101113e2f697fa'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/service_provider.rb]/ensure: defined content as '{md5}66cc42526eae631e306b397391f1f01c'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/util]/ensure: created
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/facter/util/puppet_settings.rb]/ensure: defined content as '{md5}9f1d2593d0ae56bfca89d4b9266aeee1'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet]/ensure: created
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions]/ensure: created
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/deprecation.rb]/ensure: defined content as '{md5}59b803eaa15b5a559040497bffc172ae'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/fact.rb]/ensure: defined content as '{md5}367379bc8c0d29cc2ffceb4f4d7f9f1c'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/is_a.rb]/ensure: defined content as '{md5}9dad7f8c9b75348cd97aca986ac0b29a'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/is_absolute_path.rb]/ensure: defined content as '{md5}96b217f26d06dbac87a2c6a8cfd2d8c8'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/is_array.rb]/ensure: defined content as '{md5}9292a646010d167417a1936b0b0c17b9'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/is_bool.rb]/ensure: defined content as '{md5}73957f9efd75ed8a7ab867f9de6da117'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/is_float.rb]/ensure: defined content as '{md5}af3bd6bb56878bac8cc4fe4f7564e4f9'
+Notice: /File[/opt/puppetlabs/puppet/cache/lib/puppet/functions/is_ip_address.rb]/ensure: defined content as '{md5}ee231c66c3e039778bf46702d89815a6'
+:
+:
+Info: Loading facts
+Info: Caching catalog for puppetnode1
+Info: Applying configuration version '1532839141'
+Notice: /Stage[main]/Motd/File[/etc/motd]/ensure: defined content as '{md5}53d510bc639c8bcdd0856b9e988fb04c'
+Info: Creating state file /opt/puppetlabs/puppet/cache/state/state.yaml
+Notice: Applied catalog in 0.90 seconds
+root@puppetnode1:/# puppet agent
+root@puppetnode1:/# puppet agent -tInfo: Using configured environment 'production'Info: Retrieving pluginfactsInfo: Retrieving pluginInfo: Loading factsInfo: Caching catalog for puppetnode1Info: Applying configuration version '1532973404'Notice: /Stage[main]/Motd/File[/etc/motd]/content:--- /etc/motd   2018-07-30 17:49:31.077331650 +0000+++ /tmp/puppet-file20180730-109-1wl7wog        2018-07-30 17:56:44.837118847 +0000@@ -1,2 +1,2 @@ The operating system is Ubuntu-The free memory is 389.10 MiB+The free memory is 385.85 MiBNotice: /Stage[main]/Motd/File[/etc/motd]/content: content changed '{md5}ee99a65fec6a546e6ff8c96eb54a805a' to '{md5}ee63ae0eec8fa334ece1b7638fe06ed5'Notice: Applied catalog in 0.55 secondsroot@puppetnode1:/#================================================================================$ docker run -ti --network puppet --name puppetnode2 --hostname puppetnode2 schogini/docker-puppetnode-ubunturoot@puppetnode2:/# root@puppet:/#root@puppetnode2:/# puppet agentroot@puppetnode2:/# puppet agent -troot@puppetnode2:/# puppet agent -tInfo: Using configured environment 'production'Info: Retrieving pluginfactsInfo: Retrieving pluginInfo: Loading factsInfo: Caching catalog for puppetnode2Info: Applying configuration version '1532974145'Notice: /Stage[main]/Motd/File[/etc/motd]/content:--- /etc/motd   2018-07-30 18:08:41.195185975 +0000+++ /tmp/puppet-file20180730-98-h8dhhe  2018-07-30 18:09:05.854988456 +0000@@ -1,2 +1,2 @@ The operating system is Ubuntu-The free memory is 362.65 MiB+The free memory is 340.11 MiBNotice: /Stage[main]/Motd/File[/etc/motd]/content: content changed '{md5}50c4c6b3be8a4d091e03cc58e50bbae3' to '{md5}1b10cd06dd29d97489b3637bae6fa8fe'Notice: Applied catalog in 0.57 secondsroot@puppetnode2:/#

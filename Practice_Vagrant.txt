@@ -1,4 +1,4 @@
-Somesh@Som MINGW64 ~/someshDevops
+	Somesh@Som MINGW64 ~/someshDevops
 $ pwd
 /c/Users/Somesh/someshDevops
 

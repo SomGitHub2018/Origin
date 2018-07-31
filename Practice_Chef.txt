@@ -1,2 +1,238 @@
 https://getchef.opscode.com/signup - userid - somchefdevops password-Welcome123#
 
+
+=================================================================================================================================
+docker run --rm -ti --name chefws --network chef -v /c/Users/user/safe/test/chef-ws/chef-repo:/root/chef-repo schogini/chef-ws
+git config --global user.email 'roshan@example.com'
+git config --global user.name 'mar'
+STEP 5: Run the Chef Client (in local mode)
+# chef-client –z
+cd chef-repo/ cookbooks    (while testing Chef assumes that all recipes are in the cookbooks folder)
+chef generate cookbook roshan
+nano cookbooks/sree/recipes/default.rb
+chef-apply default.rb 
+==check locally to a default rb
+chef-client -z -o cookbookname ==will create alocalnode and check
+knife cookbook upload roja ==uploads coookbok to chefserver            
+Bootstraping
+knife bootstrap chefnode1 -x root -P 123456 -N chefnode1
+Knife nodelist -z
+knife node list
+knife node show chefnode1
+knife node show chefnode1 -r
+knife node show chefnode1 -l
+knife node run_list add chefnode1 "recipe[roshan]" ====will add recipe to the node
+knife search node "*"
+knife search node "platform:ubuntu"
+knife search node 'recipes:roshan*'
+knife cookbook upload roshan
+knife node run_list set chefnode1 "recepie]roshan""default2]" ------------- reset a recipe
+  mkdir environments
+  knife environment from file environments/dev.rb
+knife environment list -w
+  knife node environment set chefnode1 dev
+knife node environment set chefnode1 prod
+knife bootstrap chefnode2 -x root -P 123456 -N chefnode2
+knife node run_list set chefnode2 "recepie]roshan""default2]"
+knife role from file roles/testwebserver.rb
+knife role list -w
+knife node run_list add chefnode1 "role[testwebserver]"
+chef generate cookbook apache
+knife cookbook upload apache
+knife role from file roles/prodwebserver.rb
+knife node run_list set chefnode1 "role[testwebserver]"
+knife node run_list set chefnode3 "role[testwebserver]"
+knife environmentcompare dev
+knife environment compare dev prod
+knife node run_list set chefnode3 "role[prodwebserver]'
+-----------------------------------------------------------------------------------------------
+docker run --rm -ti --name chefnode1 --network chef schogini/chef-node
+-----------------------------------------------------------------------------------------------
+docker run --rm -ti --name chefnode2 --network chef schogini/chef-node -E "prod"
+-----------------------------------------------------------------------------------------------
+docker run --rm -ti --name chefnode2 -p 3278:80 --network chef schogini/chef-node
+
+=================================================================================================================================
+Somesh@Som MINGW64 ~/DockerProjects/training/ro
+$ cd /C/SomeshFolder/Studies/DevOps/chef-ws
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws
+$ ls
+chef-repo/
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws
+$ cd chef-repo/
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws/chef-repo
+$ ls
+cookbooks/  README.md  roles/
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws/chef-repo
+$ ls -la
+total 9
+drwxr-xr-x 1 Somesh 197609    0 Jul 22 09:06 ./
+drwxr-xr-x 1 Somesh 197609    0 Jul 22 09:06 ../
+drwxr-xr-x 1 Somesh 197609    0 Jul 22 01:28 .chef/
+-rw-r--r-- 1 Somesh 197609  495 Jul 22 01:28 .gitignore
+drwxr-xr-x 1 Somesh 197609    0 Jul 22 01:28 cookbooks/
+-rw-r--r-- 1 Somesh 197609 2341 Jul 22 01:28 README.md
+drwxr-xr-x 1 Somesh 197609    0 Jul 22 01:28 roles/
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws/chef-repo
+$ cd .chef/
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws/chef-repo/.chef
+$ ls
+knife.rb  somchefdevops.pem
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws/chef-repo/.chef
+$ cd ..
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws/chef-repo
+$ ls
+cookbooks/  README.md  roles/
+
+Somesh@Som MINGW64 /C/SomeshFolder/Studies/DevOps/chef-ws/chef-repo
+$
+=============================================================================
+docker run --rm -ti --name chef-ws --network chef -v /c/Users/Somesh/DockerProjects/chef-ws/chef-repo:/root/chef-repo schogini/chef-ws --> for server 
+git config --global user.email "someshsahu@gmail.com"
+git config --global user.name "somesh"
+chef-client -z
+knife bootstrap chefnode1 -x root -P 123456 -N chefnode1 --> load node file using knife..
+knife node show
+
+docker run --rm -ti --name chefnode1 --network chef schogini/chef-node --> for client node
+
+=================================================================================
+$ docker run --rm -ti --name chefnode1 --network chef schogini/chef-node
+ * Starting OpenBSD Secure Shell server sshd                             [ OK ]
+root@05aaaca2a279:/# passwd
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+root@05aaaca2a279:/# chef-client
+bash: chef-client: command not found
+root@05aaaca2a279:/# chef-client
+Starting Chef Client, version 13.10.0
+resolving cookbooks for run list: []
+Synchronizing Cookbooks:
+Installing Cookbook Gems:
+Compiling Cookbooks...
+[2018-07-28T15:58:06+00:00] WARN: Node chefnode1 has an empty run list.
+Converging 0 resources
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 0/0 resources updated in 09 seconds
+root@05aaaca2a279:/#
+
+===================================================================================
+root@8d9bf9e4e707:~/chef-repo# knife bootstrap chefnode1 -x root -P 123456 -N chefnode1
+Node chefnode1 exists, overwrite it? (Y/N) y
+Client chefnode1 exists, overwrite it? (Y/N) y
+Creating new client for chefnode1
+Creating new node for chefnode1
+Connecting to chefnode1
+root@chefnode1's password:
+chefnode1 -----> Installing Chef Omnibus (-v 13)
+chefnode1 downloading https://omnitruck-direct.chef.io/chef/install.sh
+chefnode1   to file /tmp/install.sh.56/install.sh
+chefnode1 trying wget...
+chefnode1 ubuntu 14.04 x86_64
+chefnode1 Getting information for chef stable 13 for ubuntu...
+chefnode1 downloading https://omnitruck-direct.chef.io/stable/chef/metadata?v=13&p=ubuntu&pv=14.04&m=x86_64
+chefnode1   to file /tmp/install.sh.60/metadata.txt
+chefnode1 trying wget...
+chefnode1 sha1  38b00df32a7de0f7e4b2f20b2c7addb7452ec0e0
+chefnode1 sha256        9b5f55ed674323e6f25537cab94335f4c5906763a364b18216107b45d4b91eac
+chefnode1 url   https://packages.chef.io/files/stable/chef/13.10.0/ubuntu/14.04/chef_13.10.0-1_amd64.deb
+chefnode1 version       13.10.0
+chefnode1 downloaded metadata file looks valid...
+chefnode1 downloading https://packages.chef.io/files/stable/chef/13.10.0/ubuntu/14.04/chef_13.10.0-1_amd64.deb
+chefnode1   to file /tmp/install.sh.60/chef_13.10.0-1_amd64.deb
+chefnode1 trying wget...
+chefnode1 Comparing checksum with sha256sum...
+chefnode1 Installing chef 13
+chefnode1 installing with dpkg...
+chefnode1 Selecting previously unselected package chef.
+(Reading database ... 16847 files and directories currently installed.)
+chefnode1 Preparing to unpack .../chef_13.10.0-1_amd64.deb ...
+chefnode1 Unpacking chef (13.10.0-1) ...
+chefnode1 Setting up chef (13.10.0-1) ...
+chefnode1 Thank you for installing Chef!
+chefnode1 Starting the first Chef Client run...
+chefnode1 Starting Chef Client, version 13.10.0
+chefnode1 resolving cookbooks for run list: []
+chefnode1 Synchronizing Cookbooks:
+chefnode1 Installing Cookbook Gems:
+chefnode1 Compiling Cookbooks...
+chefnode1 [2018-07-28T15:56:18+00:00] WARN: Node chefnode1 has an empty run list.
+chefnode1 Converging 0 resources
+chefnode1
+chefnode1 Running handlers:
+chefnode1 Running handlers complete
+chefnode1 Chef Client finished, 0/0 resources updated in 09 seconds
+root@8d9bf9e4e707:~/chef-repo# ls
+README.md  cookbooks  environments  firstone  nodes  roles
+root@8d9bf9e4e707:~/chef-repo#
+root@8d9bf9e4e707:~/chef-repo# knife node list
+chefnode1
+root@8d9bf9e4e707:~/chef-repo#
+root@508ca35ca8ed:~/chef-repo/roles# knife node show chefnode1
+Node Name:   chefnode1
+Environment: _default
+FQDN:        38a2de81ae6e
+IP:          172.19.0.3
+Run List:
+Roles:
+Recipes:
+Platform:    ubuntu 14.04
+Tags:
+root@508ca35ca8ed:~/chef-repo/roles#
+root@8d9bf9e4e707:~/chef-repo# cd cookbooks/
+root@8d9bf9e4e707:~/chef-repo/cookbooks# ls
+chefignore  firstone  some  starter
+root@8d9bf9e4e707:~/chef-repo/cookbooks# cd some
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# ls
+Berksfile  README.md  chefignore  metadata.rb  recipes  spec  test
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# cd ..
+root@8d9bf9e4e707:~/chef-repo/cookbooks# cd ..
+root@8d9bf9e4e707:~/chef-repo#
+root@8d9bf9e4e707:~/chef-repo# knife node run_list add chefnode1 "recipe[some]"
+chefnode1:
+  run_list: recipe[some]
+root@8d9bf9e4e707:~/chef-repo#
+root@8d9bf9e4e707:~/chef-repo/cookbooks# ls
+chefignore  firstone  some  starter
+root@8d9bf9e4e707:~/chef-repo/cookbooks# cd some/
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# ls
+Berksfile  README.md  chefignore  metadata.rb  recipes  spec  test
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# cd recipes/
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/recipes# vim default2.rb
+bash: vim: command not found
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/recipes# nano default2.rb
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/recipes# cd ..
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# cd recipes/
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/recipes# cd ..
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# mkdir templates
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# ls
+Berksfile  README.md  chefignore  metadata.rb  recipes  spec  templates  test
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# cd templates/
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates# ls
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates# mkdir default
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates# ls
+default
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates# cd default/
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates/default# ls
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates/default# ls
+index.htnl.erb
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates/default# cd ..
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some/templates# cd ..
+root@8d9bf9e4e707:~/chef-repo/cookbooks/some# cd ..
+root@8d9bf9e4e707:~/chef-repo/cookbooks# cd ..
+root@8d9bf9e4e707:~/chef-repo# knife node run_list set chefnode1 "recipe[some::default2]"
+chefnode1:
+  run_list: recipe[some::default2]
+root@8d9bf9e4e707:~/chef-repo#
+

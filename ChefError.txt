@@ -1,0 +1,111 @@
+                        ##         .
+                  ## ## ##        ==
+               ## ## ## ## ##    ===
+           /"""""""""""""""""\___/ ===
+      ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+           \______ o           __/
+             \    \         __/
+              \____\_______/
+
+docker is configured to use the default machine with IP 192.168.99.100
+For help getting started, check out the docs at https://docs.docker.com
+
+
+Start interactive shell
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run --rm -ti --name chef-ws --network chef -v /c/Users/Somesh/DockerProjects/chef-ws/chef-repo:/root/chef-repo schogini/chef-ws
+root@010c4f94fdb1:~/chef-repo# git config --global user.email "someshsahu@gmail.com"
+root@010c4f94fdb1:~/chef-repo# git config --global user.name "somesh"
+root@010c4f94fdb1:~/chef-repo# chef-client -z
+[2018-07-29T02:33:51+00:00] INFO: Started chef-zero at chefzero://localhost:1 with repository at /root/chef-repo
+  One version per cookbook
+
+[2018-07-29T02:33:51+00:00] INFO: Forking chef instance to converge...
+Starting Chef Client, version 13.2.20
+[2018-07-29T02:33:51+00:00] INFO: *** Chef 13.2.20 ***
+[2018-07-29T02:33:51+00:00] INFO: Platform: x86_64-linux
+[2018-07-29T02:33:51+00:00] INFO: Chef-client pid: 22
+[2018-07-29T02:33:51+00:00] INFO: The plugin path /etc/chef/ohai/plugins does not exist. Skipping...
+[2018-07-29T02:33:53+00:00] INFO: Run List is []
+[2018-07-29T02:33:53+00:00] INFO: Run List expands to []
+[2018-07-29T02:33:53+00:00] INFO: Starting Chef Run for somchefdevops
+[2018-07-29T02:33:53+00:00] INFO: Running start handlers
+[2018-07-29T02:33:53+00:00] INFO: Start handlers complete.
+resolving cookbooks for run list: []
+[2018-07-29T02:33:53+00:00] INFO: Loading cookbooks []
+Synchronizing Cookbooks:
+Installing Cookbook Gems:
+Compiling Cookbooks...
+[2018-07-29T02:33:53+00:00] WARN: Node somchefdevops has an empty run list.
+Converging 0 resources
+[2018-07-29T02:33:53+00:00] INFO: Chef Run complete in 0.15895134 seconds
+
+Running handlers:
+[2018-07-29T02:33:53+00:00] INFO: Running report handlers
+Running handlers complete
+[2018-07-29T02:33:53+00:00] INFO: Report handlers complete
+Chef Client finished, 0/0 resources updated in 01 seconds
+root@010c4f94fdb1:~/chef-repo# knife bootstrap chefnode1 -x root -P 123456 -N chefnode1
+Node chefnode1 exists, overwrite it? (Y/N) Y
+Y
+Client chefnode1 exists, overwrite it? (Y/N) Creating new client for chefnode1
+Creating new node for chefnode1
+Connecting to chefnode1
+ERROR: Network Error: getaddrinfo: Name or service not known
+Check your knife configuration and network settings
+root@010c4f94fdb1:~/chef-repo# exit
+exit
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker network ls
+NETWORK ID          NAME                DRIVER              SCOPE
+81d32bfc0ee0        bridge              bridge              local
+6d70d49f1d86        bridge01            bridge              local
+6f0a8e1c88b9        chef                bridge              local
+c6c87e2f4e95        host                host                local
+c4c73bd9d00d        none                null                local
+7681e84d1a76        roja                bridge              local
+
+Somesh@Som MINGW64 /c/Program Files/Docker Toolbox
+$ docker run --rm -ti --name chef-ws --network roja -v /c/Users/Somesh/DockerProjects/chef-ws/chef-repo:/root/chef-repo schogini/chef-ws
+root@b3d795714e82:~/chef-repo# git config --global user.email "someshsahu@gmail.com"
+root@b3d795714e82:~/chef-repo# git config --global user.name "somesh"
+root@b3d795714e82:~/chef-repo# chef-client -z
+[2018-07-29T02:36:50+00:00] INFO: Started chef-zero at chefzero://localhost:1 with repository at /root/chef-repo
+  One version per cookbook
+
+[2018-07-29T02:36:50+00:00] INFO: Forking chef instance to converge...
+Starting Chef Client, version 13.2.20
+[2018-07-29T02:36:50+00:00] INFO: *** Chef 13.2.20 ***
+[2018-07-29T02:36:50+00:00] INFO: Platform: x86_64-linux
+[2018-07-29T02:36:50+00:00] INFO: Chef-client pid: 22
+[2018-07-29T02:36:50+00:00] INFO: The plugin path /etc/chef/ohai/plugins does not exist. Skipping...
+[2018-07-29T02:36:52+00:00] INFO: Run List is []
+[2018-07-29T02:36:52+00:00] INFO: Run List expands to []
+[2018-07-29T02:36:52+00:00] INFO: Starting Chef Run for somchefdevops
+[2018-07-29T02:36:52+00:00] INFO: Running start handlers
+[2018-07-29T02:36:52+00:00] INFO: Start handlers complete.
+resolving cookbooks for run list: []
+[2018-07-29T02:36:52+00:00] INFO: Loading cookbooks []
+Synchronizing Cookbooks:
+Installing Cookbook Gems:
+Compiling Cookbooks...
+[2018-07-29T02:36:52+00:00] WARN: Node somchefdevops has an empty run list.
+Converging 0 resources
+[2018-07-29T02:36:52+00:00] INFO: Chef Run complete in 0.154475208 seconds
+
+Running handlers:
+[2018-07-29T02:36:52+00:00] INFO: Running report handlers
+Running handlers complete
+[2018-07-29T02:36:52+00:00] INFO: Report handlers complete
+Chef Client finished, 0/0 resources updated in 02 seconds
+root@b3d795714e82:~/chef-repo# knife bootstrap chefnode1 -x root -P 123456 -N chefnode1
+Node chefnode1 exists, overwrite it? (Y/N) Y
+Client chefnode1 exists, overwrite it? (Y/N) Y
+Creating new client for chefnode1
+Creating new node for chefnode1
+Connecting to chefnode1
+ERROR: Network Error: getaddrinfo: Name or service not known
+Check your knife configuration and network settings
+root@b3d795714e82:~/chef-repo#
